@@ -1,0 +1,25 @@
+{
+  "name": "projekuts",
+  "version": "1.0.0",
+  "description": "projek uts pemrograman web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxmiliam-code/projekuts.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "node",
+    "js"
+  ],
+  "author": "oki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxmiliam-code/projekuts/issues"
+  },
+  "homepage": "https://github.com/maxmiliam-code/projekuts#readme"
+}
