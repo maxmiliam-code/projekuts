@@ -28,3 +28,16 @@ exports.tampilsemuadatamontir =function(req,res){
         }
     });
 };
+
+//menampilkan semua data sparepart berdasarkan id
+exports.tampilberdasarkanidsparepart = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_sparepart WHERE id_sparepart = ?',[id], 
+    function(error, rows, fields){
+        if(error){
+            connection.log(error);
+        }else{
+            response.ok(rows, res);
+        }
+    });
+};

@@ -11,4 +11,7 @@ module.exports = function(app) {
     
     app.route('/tampilmontir')
         .get(jsonku.tampilsemuadatamontir);
+
+    app.route('/tampilsparepart/:id')
+        .get(jsonku.tampilberdasarkanidsparepart);
 }
