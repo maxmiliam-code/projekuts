@@ -16,7 +16,7 @@ exports.registrasi = function(req, res) {
         level: req.body.level
     }
 
-    var query = "SELECT email FROM ?? WHERE ??";
+    var query = "SELECT email FROM ?? WHERE ??=?";
     var table = ["t_user", "email", post.email];
 
     query = mysql.format(query,table);
@@ -37,7 +37,7 @@ exports.registrasi = function(req, res) {
                     }
                 });
             }else{
-                response.ok("Email sudah terdaftar!");
+                response.ok("Email sudah terdaftar!",res);
             }
         }
     });
