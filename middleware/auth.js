@@ -201,3 +201,36 @@ exports.inputsparepart = function(req, res) {
         }
     });
 };
+
+//controller untuk input data level
+exports.inputlevel = function(req, res) {
+    var post = {
+        nama_level: req.body.nama_level
+    }
+
+    var query = "SELECT nama_level FROM ?? WHERE ??=?";
+    var table = ["t_level", "nama_level", post.nama_level];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_level"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data level baru", res);
+                    }
+                });
+            }else{
+                response.ok("Level sudah terdaftar!",res);
+            }
+        }
+    });
+};
