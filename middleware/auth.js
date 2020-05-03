@@ -10,7 +10,7 @@ var ip = require('ip');
 //controller untuk registrasi
 exports.registrasi = function(req, res) {
     var post = {
-        nama_user: req.body.username,
+        nama_user: req.body.nama_user,
         email: req.body.email,
         password: md5(req.body.password),
         level: req.body.level
@@ -103,7 +103,7 @@ exports.inputservis = function(req, res) {
         id_user: req.body.id_user,
         id_montir: req.body.id_montir,
         id_sparepart: req.body.id_sparepart,
-        jumlah_sparepart: req.body.jumlah_sparepart,
+        jumlah_sparepart: req.body.jumlah_sparepart
     }
 
     var query = "SELECT tgl_servis FROM ?? WHERE ??=?";
@@ -128,6 +128,40 @@ exports.inputservis = function(req, res) {
                 });
             }else{
                 response.ok("Servis sudah terdaftar!",res);
+            }
+        }
+    });
+};
+
+//controller untuk input data montir
+exports.inputmontir = function(req, res) {
+    var post = {
+        nama_montir: req.body.nama_montir,
+        harga_perjam: req.body.harga_perjam
+    }
+
+    var query = "SELECT nama_montir FROM ?? WHERE ??=?";
+    var table = ["t_montir", "nama_montir", post.nama_montir];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_montir"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Montir baru", res);
+                    }
+                });
+            }else{
+                response.ok("Montir sudah terdaftar!",res);
             }
         }
     });
