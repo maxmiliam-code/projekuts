@@ -96,7 +96,7 @@ exports.halamanrahasia = function(req,res){
     response.ok("Halaman ini hanya untuk user dengan level = 2!",res);
 }
 
-//controller untuk input data servis
+//controller untuk input data servis dapat menggunakan level 1 atau level 2
 exports.inputservis = function(req, res) {
     var post = {
         tgl_servis: new Date(),
