@@ -241,8 +241,8 @@ exports.ubahmontir = function (req, res) {
     var nama_montir = req.body.nama_montir;
     var harga_perjam = req.body.harga_perjam;
 
-    connection.query('UPDATE t_montir SET nama_montir=?, harga_perjam=? WHERE id_montir=?', 
-    [nama_montir, harga_perjam,id_montir],
+    connection.query('UPDATE t_montir SET nama_montir=?,harga_perjam=? WHERE id_montir=?', 
+    [nama_montir,harga_perjam,id_montir],
         function (error) {
             if (error) {
                 console.log(error);
@@ -270,7 +270,7 @@ exports.ubahsparepart = function (req, res) {
         });
 };
 
-//ubah user
+//mengubah data di tabel user
 exports.ubahuser = function (req, res) {
     var id_user = req.body.id_user;
     var nama_user = req.body.nama_user;
@@ -285,12 +285,12 @@ exports.ubahuser = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Data User Berhasil Diubah", res);
+                response.ok("Berhasil Ubah Data User", res);
             }
         });
 };
 
-//ubah level
+//mengubah data di tabel level
 exports.ubahlevel = function (req, res) {
     var id_level = req.body.id_level;
     var nama_level = req.body.nama_level;    
@@ -302,12 +302,12 @@ exports.ubahlevel = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Level Berhasil Diubah", res);
+                response.ok("Berhasil Ubah Data Level", res);
             }
         });
 };
 
-//ubah servis
+//mengubah data di tabel servis
 exports.ubahservis = function (req, res) {
     var id_servis = req.body.id_servis;
     var tgl_servis = req.body.tgl_servis;
@@ -323,7 +323,87 @@ exports.ubahservis = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Data Servis Berhasil Diubah", res);
+                response.ok("Berhasil Ubah Data Servis", res);
+            }
+        });
+};
+
+//menghapus data di tabel montir
+exports.hapusmontir = function (req, res) {
+    var id_montir = req.body.id_montir;    
+
+    connection.query('DELETE FROM t_montir WHERE id_montir=?',
+    [id_montir],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data Montir Berhasil Dihapus", res);
+            }
+        });
+};
+
+//menghapus data di tabel sparepart
+exports.hapussparepart = function (req, res) {
+    var id_sparepart = req.body.id_sparepart;    
+
+    connection.query('DELETE FROM t_sparepart WHERE id_sparepart=?',
+    [id_sparepart],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data Sparepart Berhasil Dihapus", res);
+            }
+        });
+};
+
+//menghapus data di tabel user
+exports.hapususer = function (req, res) {
+    var id_user = req.body.id_user;    
+
+    connection.query('DELETE FROM t_user WHERE id_user=?',
+    [id_user],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data User Berhasil Dihapus", res);
+            }
+        });
+};
+
+//menghapus data di tabel level
+exports.hapuslevel = function (req, res) {
+    var id_level = req.body.id_level;    
+
+    connection.query('DELETE FROM t_level WHERE id_level=?',
+    [id_level],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data Level Berhasil Dihapus", res);
+            }
+        });
+};
+
+//menghapus data di tabel servis
+exports.hapusservis = function (req, res) {
+    var id_servis = req.body.id_servis;    
+
+    connection.query('DELETE FROM t_servis WHERE id_servis=?',
+    [id_servis],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data Servis Berhasil Dihapus", res);
             }
         });
 };
