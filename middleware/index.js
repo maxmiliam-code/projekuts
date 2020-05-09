@@ -7,8 +7,9 @@ var verifikasipengguna = require('./verifikasi');
 //daftarkan menu
 router.post('/api/v1/login', auth.login);
 
-//alamat yang perlu otorisasi admin
+//alamat yang perlu otorisasi 
 router.get('/api/v1/rahasia',verifikasiadmin(), auth.halamanrahasia);
+router.get('/api/v1/totalservis',verifikasiadmin(), auth.tampiltotalservis);
 
 //menu sparepart
 router.post('/api/v1/inputsparepart',verifikasiadmin(), auth.inputsparepart);
