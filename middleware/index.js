@@ -1,8 +1,8 @@
 var express = require('express');
 var auth = require('./auth');
 var router = express.Router();
-var verifikasiadmin = require('./verifikasi');
-var verifikasipengguna = require('./verifikasi');
+var verifikasiadmin = require('./verifikasiadmin');
+var verifikasipengguna = require('./verifikasipengguna');
 
 //daftarkan menu
 router.post('/api/v1/login', auth.login);
