@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/secret');
 
-function verifikasipengguna(){
+function verifikasiadmin(){
     return function(req, rest, next){
         var lvl = req.body.lvl;
         //cek authorization header
@@ -14,7 +14,7 @@ function verifikasipengguna(){
                 if(err){
                     return rest.status(401).send({auth:false, message:'Token tidak terdaftar!'});
                 }else {
-                    if(lvl == 2 ){
+                    if(lvl == 1 ){
                         req.auth = decoded;
                         next();
                     }else {
@@ -28,4 +28,4 @@ function verifikasipengguna(){
     }
 }
 
-module.exports = verifikasipengguna;
+module.exports = verifikasiadmin;
